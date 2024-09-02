@@ -1,0 +1,20 @@
+Banco
+-Conta Corrente
+-Conta Coupança
+--Conta (# int agencia
+	 # int numero
+	 # double saldo
+	 # Cliente Cliente
+		// 
+	 + Deposito
+	 + Saque
+	 + Transferencia)
+---InterfaceConta(*Sacar
+		  *Depositar
+		  *Transferir
+		  *Imprimir extrato)
+-Cliente(- String nome)
+
+
+PKG - 	org.bancovirtual.banco.cliente
+	org.bancovirtual.banco.tipoconta.conta
