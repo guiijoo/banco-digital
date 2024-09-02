@@ -1,0 +1,1 @@
+Este é um projeto simples em Java que simula um banco digital básico. Ele permite a criação de contas correntes e poupanças, além de realizar operações básicas como depósito, saque, transferência e exibição de extrato.
