@@ -5,10 +5,10 @@ Banco
 	 # int numero
 	 # double saldo
 	 # Cliente Cliente
-		// 
-	 + Deposito
-	 + Saque
-	 + Transferencia)
+	 + Deposito(Double valor)
+	 + Saque(Double valor)
+	 + Transferencia(Double valor, InterfaceConta cliente)
+	 + Imprimir Extrato())
 ---InterfaceConta(*Sacar
 		  *Depositar
 		  *Transferir

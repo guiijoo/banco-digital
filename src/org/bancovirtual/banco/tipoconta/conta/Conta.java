@@ -4,64 +4,49 @@ import org.bancovirtual.banco.cliente.Cliente;
 
 public class Conta implements InterfaceConta {
 
+    private static final int AGENCIA_PADRAO = 1;
+	private static int SEQUENCIAL = 1;
+    
     protected int agencia;
     protected int numero;
     protected double saldo;
     protected Cliente cliente;
 
-    public Conta(int agencia, int numero, Cliente cliente) {
-        this.agencia = agencia;
-        this.numero = numero;
+    public Conta(Cliente cliente) {
+        this.agencia = AGENCIA_PADRAO;
+        this.numero = SEQUENCIAL++;
         this.cliente = cliente;
+        this.saldo = 0.0;
     }
 
-    public int getAgencia() {
-        return agencia;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    @Override
-    public String toString() {
-        return "Conta [agencia=" + agencia + ", numero=" + numero + ", saldo=" + saldo + ", cliente=" + cliente + "]";
-    }
-
-
-    @Override
     public void Sacar(Double valor) {
         if (saldo > valor) {
             saldo -= valor;
             System.out.println("Saque realizado com sucesso!");
+        }else{
+            throw new UnsupportedOperationException("Unimplemented method 'Sacar'");
         }
-        throw new UnsupportedOperationException("Unimplemented method 'Sacar'");
     }
 
-    @Override
-    public void Depositar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Depositar'");
+    public void Depositar(Double valor) {
+        saldo += valor;
+        System.out.println("Depósito realizado com sucesso!");
     }
 
-    @Override
-    public void Transferir() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Transferir'");
+    public void Transferir(InterfaceConta cliente, Double valor) {
+            this.Sacar(valor);
+            cliente.Depositar(valor);
+            System.out.println("Transferência realizada com sucesso!");
     }
 
-    @Override
     public void ImpimirExtrato() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ImpimirExtrato'");
+        System.out.println("--------------------------------------------------");
+        System.out.println("Extrato da Conta: ");
+        System.out.println("Cliente: " + cliente.getNome());
+        System.out.println("Agência: " + agencia);
+        System.out.println("Número: " + numero);
+        System.out.println("Saldo: " + saldo);
+        System.out.println("--------------------------------------------------");
     }
     
 }
